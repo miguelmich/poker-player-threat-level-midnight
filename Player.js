@@ -4,11 +4,18 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
-    const { current_buy_in } = gameState;
+    const { current_buy_in, in_action, players, community_cards } = gameState;
     // const bigBlind = small_blind * 2;
     // const betLimit = bigBlind * 2;
     
     // if (current_buy_in <= betLimit) {
+
+    const cards = community_cards + players[in_action].hole_cards;
+
+    if( cards.length >= 5){
+      Rank(players[in_action].hole_cards);
+    }
+
     bet(current_buy_in);
     // }
 
