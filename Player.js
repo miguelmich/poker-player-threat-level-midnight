@@ -4,8 +4,8 @@ class Player {
     return '0.1';
   }
 
-  static betRequest(gameState, bet) {
-    BetUtil.getBet(gameState).then((betResponse) => {
+  static async  betRequest(gameState, bet) {
+    await BetUtil.getBet(gameState).then((betResponse) => {
       bet(betResponse);
     }).catch((err) => console.error(err));
   }
