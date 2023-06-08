@@ -1,16 +1,9 @@
-const axios = require('axios');
-class Rank {  
-    static async getRank(cards) {
-        const url = `http://rainman.leanpoker.org/rank?cards=${encodeURIComponent(JSON.stringify(cards))}`;
-    
-        try {
-            const response = await axios.get(url);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
+export function Rank(cards){
+    var request = require('request');
+    request.get(`http://rainman.leanpoker.org/rank?cards=${cards}`, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            return body;
+         }
+    })
 }
-  
-module.exports = Rank;
