@@ -1,3 +1,4 @@
+const axios = require('axios');
 
 class Rank {
     static get VERSION() {
@@ -5,9 +6,6 @@ class Rank {
     }
   
     static async getRank(cards) {
-    
-        const axios = require('axios');
-    
         const url = `http://rainman.leanpoker.org/rank?cards=${encodeURIComponent(JSON.stringify(cards))}`;
     
         try {

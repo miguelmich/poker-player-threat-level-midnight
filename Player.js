@@ -5,7 +5,9 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
-    bet(BetUtil.getBet(gameState));
+    BetUtil.getBet(gameState).then((betResponse) => {
+      bet(betResponse);
+    }).catch((err) => console.error(err));
   }
 
   static showdown(gameState) {
