@@ -3,21 +3,27 @@ const PokerUtil = require('./PokerUtil');
 class BetUtil {
 
   static getBet(gameState) {
-    const { current_buy_in, in_action, players, community_cards } = gameState;
-    const score = PokerUtil.evaluateInitialHand(players[in_action].hole_cards);
+    const { current_buy_in, minimum_raise, in_action, players, community_cards } = gameState;
+    if (isNaN(in_action)) return 0;
+    const amountToCall = current_buy_in - players[in_action].bet;
     if (!community_cards || (community_cards.length == 0)) {
       /* no community cards */
-      if (score == 1 || score == 0) {
-        return 0;
-      } else {
-        if (score == 2) {
+      const initScore = PokerUtil.evaluateInitialHand(players[in_action].hole_cards);
+      switch(initScore) {
+        case 0:
+        case 1:
           return 0;
-        } else {
-          return current_buy_in;
-        }
+        case 2:
+          return amountToCall;
+        case 3:
+          return amountToCall + minimum_raise;
+        case 4:
+          return amountToCall + minimum_raise*2;
+        default:
+          return 0;
       }
     } else {
-      return current_buy_in; // need more work
+      return amountToCall;
     }
   }
 }
