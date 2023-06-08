@@ -1,3 +1,4 @@
+import {rank} from './Rank'
 class Player {
   static get VERSION() {
     return '0.1';
@@ -13,7 +14,7 @@ class Player {
     const cards = community_cards + players[in_action].hole_cards;
 
     if( cards.length >= 5){
-      Rank(players[in_action].hole_cards);
+      rank(players[in_action].hole_cards);
     }
 
     bet(current_buy_in);

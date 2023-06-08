@@ -1,5 +1,5 @@
 
-export function Rank(cards){
+export function rank(cards){
 
     // if (cards.length < 5){
     //     return getRank();
