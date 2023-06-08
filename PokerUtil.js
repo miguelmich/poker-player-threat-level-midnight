@@ -72,8 +72,7 @@ class PokerUtils {
       if ((card1.rank === 'A' && (this._rankGreaterThan(card2.rank, 6) || card2.rank === '5'))
       || (card1.rank === 'K' && this._rankGreaterThan(card2.rank, 9))) {
         return 3;
-      } else if (card1.rank === 'A' && this._rankGreaterThan(7, card2.rank)
-      || (card1.rank === 'K')
+      } else if (card1.rank === 'A' || card1.rank === 'K'
       || (card1.rank === 'Q' && this._rankGreaterThan(card2.rank, 2))
       || (card1.rank === 'J' && this._rankGreaterThan(card2.rank, 5))
       || (card1.rank === '10' && this._rankGreaterThan(card2.rank, 6))
