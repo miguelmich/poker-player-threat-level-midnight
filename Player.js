@@ -17,7 +17,6 @@ class Player {
 
       if(cards.length >= 5){
         const b =  await Rank.getRank(cards);
-        console.log('return', b);
       }
     }
 
