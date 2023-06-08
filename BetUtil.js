@@ -10,9 +10,9 @@ class BetUtil {
     const allWin = players[in_action].stack;
     const amountToCall = current_buy_in - players[in_action].bet;
     if (!community_cards || (community_cards.length == 0)) {
-
-
+      
       /* no community cards */
+
       const initScore = PokerUtil.evaluateInitialHand(players[in_action].hole_cards);
       switch(initScore) {
         case 0:
