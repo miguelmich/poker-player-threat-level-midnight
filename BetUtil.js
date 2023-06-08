@@ -1,4 +1,5 @@
 const PokerUtil = require('./PokerUtil');
+const Rank  = require('./Rank');
 
 class BetUtil {
 
@@ -24,6 +25,11 @@ class BetUtil {
           return 0;
       }
     } else {
+      const cards = community_cards.concat(players[in_action].hole_cards);
+      if(cards.length >= 5){
+         Rank.getRank(cards);
+      }
+
       return amountToCall;
     }
   }
