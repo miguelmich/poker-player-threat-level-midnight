@@ -4,7 +4,7 @@ const Rank  = require('./Rank');
 class BetUtil {
 
   static async getBet(gameState) {
-    const { current_buy_in, minimum_raise, in_action, players, community_cards } = gameState;
+    const { current_buy_in, minimum_raise, in_action, players, community_cards, bet_index } = gameState;
     if (isNaN(in_action)) return 0;
 
     const allWin = players[in_action].stack;
@@ -21,9 +21,9 @@ class BetUtil {
         case 2:
           return amountToCall;
         case 3:
-          return amountToCall + minimum_raise;
+          return amountToCall + (bet_index < 2) ? minimum_raise : 0;
         case 4:
-          return amountToCall + minimum_raise*2;
+          return amountToCall + (bet_index < 2) ? minimum_raise*2 : 0;
         default:
           return 0;
       }
